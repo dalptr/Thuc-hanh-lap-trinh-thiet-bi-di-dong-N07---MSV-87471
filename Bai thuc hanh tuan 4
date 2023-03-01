@@ -1,0 +1,124 @@
+import 'dart:io';
+
+void e1() {
+  //  Create a list of names and print all names using list.
+  List<String> Names = ["trung", "van", "minh"];
+  for (String name in Names) {
+    print(name);
+  }
+}
+
+void e2() {
+  // Create a set of fruits and print all fruits using loop.
+  Set<String> Fruits = {"orange", "apple", "lemon"};
+  for (String fruit in Fruits) {
+    print(fruit);
+  }
+}
+
+double total(List<double> L) {
+  double res = 0;
+  for (double x in L) {
+    res += x;
+  }
+  return res;
+}
+
+void e3() {
+  // Create a program thats reads list of expenses amount using user input and print total.
+  stdout.write("Enter number of element: ");
+  double n = double.parse(stdin.readLineSync()!);
+  List<double> L = [];
+  for (int i = 0; i < n; ++i) {
+    stdout.write('Enter number = ');
+    double x = double.parse(stdin.readLineSync()!);
+    L.add(x);
+  }
+  print("Total = ${total(L)}");
+}
+
+void e4() {
+  // Create an empty list of type string called days. Use the add method to add names of 7 days and print all days.
+  List<String> days = [];
+  days.add('Monday');
+  days.add('Tuesday');
+  days.add('Wednesday');
+  days.add('Thursday');
+  days.add('Friday');
+  days.add('Saturday');
+  days.add('Sunday');
+  for (String day in days) {
+    print(day);
+  }
+}
+
+void e5() {
+  // Add your 7 friend names to the list. Use where to find a name that starts with alphabet a.
+  List<String> Names = ["Anh", "Trung", "Bien", "Son", "Van", "Huy", "An"];
+  var result = Names.where((element) => element[0].toLowerCase() == 'a');
+  if (result.length != 0) {
+    print(result.first);
+  }
+}
+
+void e6() {
+  // Create a map with name, address, age, country keys and store values to it. Update country name to other country and print all keys and values
+  Map<String, dynamic> person = {
+    'name': 'Trung',
+    'address': 'Hai Phong',
+    'country': 'Vietnam',
+    'age': '29'
+  };
+  person['country'] = 'Korean';
+  print(person);
+}
+
+void e7() {
+  // // Create a map with name, phone keys and store some values to it. Use where to find all keys that have length 4.
+  Map<String, dynamic> persons = {'name': 'Trung', 'phone': '05548552545'};
+  List<String> key =
+      persons.keys.where((element) => element.length == 4).toList();
+  print(key);
+}
+
+class Task {
+  String title = "";
+  String datetime = "";
+  String desription = "";
+  Task(String title, String datetime, String desription) {
+    this.title = title;
+    this.datetime = datetime;
+    this.desription = desription;
+  }
+  void printTask() {
+    print("Title : $title, datetime = $datetime, description = $desription");
+  }
+}
+
+class ToDo {
+  // Create a simple to-do application that allows user to add, remove, and view their task.
+  List<Task> Tasks = [];
+  void add() {
+    stdout.write('Enter title: ');
+    String title = stdin.readLineSync()!;
+    stdout.write('Enter datetime: ');
+    String datetime = stdin.readLineSync()!;
+    stdout.write('Enter desription: ');
+    String desription = stdin.readLineSync()!;
+    Task t = new Task(title, datetime, desription);
+    Tasks.add(t);
+  }
+
+  void remove(String title) {
+    var res = Tasks.where((element) => element.title == title);
+    for (Task t in res) {
+      Tasks.remove(t);
+    }
+  }
+
+  void printTasks() {
+    for (Task t in Tasks) {
+      t.printTask();
+    }
+  }
+}

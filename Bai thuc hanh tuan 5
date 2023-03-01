@@ -1,0 +1,77 @@
+import 'dart:io';
+
+void main(List<String> args) {
+  // Write a dart program to store name, age, and address of students in a csv file and read it.
+  e7();
+}
+
+void e1() {
+  //  Write a dart program to add your name to “hello.txt” file.
+  final myName = 'Trung';
+  File('hello.txt').writeAsString(myName);
+}
+
+void e2() {
+  // Write a dart program to append your friends name to a file that already has your name.
+  List<String> myFriendsName = ['Trung', 'Van', 'Minh'];
+  File file = File('hello.txt');
+  String contents = file.readAsStringSync();
+  for (String name in myFriendsName) {
+    contents += '\n' + name;
+  }
+  file.writeAsStringSync(contents);
+}
+
+String e3() {
+  return Directory.current.path;
+}
+
+void e4() {
+  // Write a dart program to copy the “hello.txt” file to “hello_copy.txt” file.
+  File('hello_copy.txt').create();
+  File file = File('hello.txt');
+  String contents = file.readAsStringSync();
+  File('hello_copy.txt').writeAsStringSync(contents);
+}
+
+void e5() {
+  // Write a dart program to create 100 files using loop.
+  for (int i = 1; i <= 2; ++i) {
+    String fileName = 'test_$i';
+    File(fileName).create();
+  }
+}
+
+void e6() {
+  // Write a dart program to delete the file “hello_copy.txt”. Make sure you have created the file “hello_copy.txt.
+  assert(File('hello_copy.txt').existsSync());
+  File('hello_copy.txt').delete();
+}
+
+void createCSV(List<List<dynamic>> rows, String fileName) {
+  File csvFile = File(fileName);
+  String csvString = rows.map((row) => row.join(',')).join('\n');
+  csvFile.writeAsStringSync(csvString);
+}
+
+void readCSV(String fileName) {
+  File csvFile = File(fileName);
+  List<String> lines = csvFile.readAsLinesSync();
+  List<List<dynamic>> data = lines.map((line) => line.split(',')).toList();
+  for (int i = 0; i < data.length; i++) {
+    print('Name: ${data[i][0]}, Age: ${data[i][1]}, Address: ${data[i][2]}');
+  }
+}
+
+void e7() {
+  //   // Write a dart program to store name, age, and address of students in a csv file and read it.
+  List<List<dynamic>> rows = [
+    ['Name', 'Age', 'Address'],
+    ['Jack', 20, '123 Main St'],
+    ['Jack 2', 21, '456 Main St 1'],
+    ['Jack 3', 22, '789 Main St 2'],
+  ];
+  String fileName = 'hello.csv';
+  createCSV(rows, fileName);
+  readCSV(fileName);
+}

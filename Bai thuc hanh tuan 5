@@ -2,12 +2,12 @@ import 'dart:io';
 
 void main(List<String> args) {
   // Write a dart program to store name, age, and address of students in a csv file and read it.
-  e7();
+  e1();
 }
 
 void e1() {
   //  Write a dart program to add your name to “hello.txt” file.
-  final myName = 'Trung';
+  final myName = 'Bien da o day';
   File('hello.txt').writeAsString(myName);
 }
 

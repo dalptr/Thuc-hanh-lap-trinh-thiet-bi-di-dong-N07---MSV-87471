@@ -1,0 +1,52 @@
+
+//  Write a dart program to create a class House with properties [id, name, prize]. Create a constructor of it and create 3 objects of it. Add them to the list and print all details.
+class House{
+  String ?id;
+  String ?name;
+  String ?prize;
+  House(String id, String name, String prize){
+    this.id = id;
+    this.name = name;
+    this.prize = prize;
+  }
+  void print_all_details(){
+    print("Id : $id");
+    print("Name : $name");
+    print("Prize: $prize");
+  }
+}
+
+// Write a dart program to create a class Laptop with properties [id, name, ram] and create 3 objects of it and print all details
+class Laptop{
+  String ?id;
+  String ?name;
+  String ?ram;
+  void print_all_details(){
+    print("Id : $id");
+    print("Name : $name");
+    print("Ram: $ram");
+  }
+}
+void main(List<String> args) {
+  House A = new House("id1","House 1", "Nobel");
+  House B = new House("id2","House 2", "Oscar");
+  House C = new House("id3","House 3", "Mam xoi vang");
+  A.print_all_details();
+  B.print_all_details();
+  C.print_all_details();
+  Laptop X = new Laptop();
+  X.id = "L1";
+  X.name = "Laptop 1";
+  X.ram = "Samsung A12";
+  Laptop Y = new Laptop();
+  Y.id = "L2";
+  Y.name = "Laptop 2";
+  Y.ram = "Samsung dddd";
+  Laptop Z = new Laptop();
+  Z.id = "L3";
+  Z.name = "Laptop 3";
+  Z.ram = "Samsung ffff";
+  X.print_all_details();
+  Y.print_all_details();
+  Z.print_all_details();
+}
